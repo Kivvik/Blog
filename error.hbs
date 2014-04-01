@@ -1,0 +1,50 @@
+{{!< default}}
+<header id="artee-site-head" class="artee-site-head">
+	<div class="artee-blog-title">
+		{{#if @blog.logo}}
+			<div class="artee-site-logo">
+				<a id="artee-blog-logo" href="{{@blog.url}}"><img src="{{@blog.logo}}" alt=""></a>
+			</div>
+		{{/if}}
+		<div class="artee-header">
+			<h1><a href="{{@blog.url}}">{{@blog.title}}</a></h1>
+		</div>
+		{{! menu partial import}}
+		<div class="artee-blog-menu">
+			{{> menu}}
+		</div>
+	</div>
+</header>
+<main class="artee-post-container" role="main">
+
+	<article class="{{post_class}} artee-post row">
+
+		<section class="artee-post-head small-12 columns">
+			<span class="artee-error-page">
+				<span class="artee-error-page-number">
+					<span class="artee-error-page-font">{{code}}</span>
+				</span>
+			</span>
+			<h1 class="artee-post-title">{{message}}</h1>
+		</section>
+
+		{{#if stack}}
+			<section class="artee-post-content small-12 columns">
+				<section class="artee-error-stack">
+					<h3>Stack Trace</h3>
+					<p><strong>{{message}}</strong></p>
+					<ul class="artee-error-stack-list">
+						{{#foreach stack}}
+							<li>
+								at
+								{{#if function}}<em class="artee-error-stack-function">{{function}}</em>{{/if}}
+								<span class="artee-error-stack-file">({{at}})</span>
+							</li>
+						{{/foreach}}
+					</ul>
+				</section>
+			</section>
+		{{/if}}
+
+	</article>
+</main>

@@ -1,0 +1,42 @@
+{{!< default}}
+
+{{! header section }}
+<header id="artee-site-head" class="artee-site-head">
+	<div class="artee-blog-title">
+		{{#if @blog.logo}}
+			<div class="artee-site-logo">
+				<a id="artee-blog-logo" href="{{@blog.url}}"><img src="{{@blog.logo}}" alt=""></a>
+			</div>
+		{{/if}}
+		<div class="artee-header">
+			<h1><a href="{{@blog.url}}">{{@blog.title}}</a></h1>
+		</div>
+		{{! menu partial import}}
+		<div class="artee-blog-menu">
+			{{> menu}}
+		</div>
+	</div>
+</header>
+{{! header section end }}
+
+<main class="artee-post-container artee-page-container" role="main">
+
+	<article class="{{post_class}} artee-post row">
+
+		{{! Everything inside the #post tags pulls data from the post }}
+		{{#post}}
+
+			{{! Everything below outputs content of the the post which has been published }}
+			<section class="artee-post-head small-12 columns">
+				<h1 class="artee-post-title">{{{title}}}</h1>
+			</section>
+
+			<section class="artee-post-content small-12 columns">
+				{{content}}
+			</section>
+
+		{{/post}}
+
+	</article>
+
+</main>
